@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   db:
     container_name: pg_container
@@ -19,3 +19,18 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
+  mongo:
+    container_name: mongodb
+    image: mongo:4
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "27017:27017"
+  mongoclient:
+    container_name: mongoclient
+    image: mongoclient/mongoclient
+    restart: always
+    ports:
+      - "3000:3000"
